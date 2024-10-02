@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Павлеса Олег ПП-21</title>
+    <style>
+        .day {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        function weekDay(size, day, color) {
+            const days = ["понеділок", "вівторок", "середа", "четвер", "п'ятниця", "субота", "неділя"];
+            const dayElement = document.createElement('div');
+            dayElement.textContent = days[day];
+            dayElement.style.fontSize = size;
+            dayElement.style.color = color;
+            dayElement.classList.add('day');
+            document.body.appendChild(dayElement);
+        }
+
+        const today = new Date();
+        const currentDay = today.getDay(); // отримуємо день тижня (0 - неділя, 1 - понеділок, ..., 6 - субота)
+
+        // Виклик функції для відображення днів тижня
+        weekDay("20px", 0, "red");      // неділя
+        weekDay("22px", 1, "blue");     // понеділок
+        weekDay("24px", 2, "green");     // вівторок
+        weekDay("26px", 3, "orange");    // середа
+        weekDay("28px", 4, "purple");    // четвер
+        weekDay("30px", 5, "pink");       // п'ятниця
+        weekDay("32px", 6, "brown");      // субота
+
+        // Виводимо поточний час
+        const hours = today.getHours();
+        const minute = today.getMinutes();
+        const formattedMinute = minute < 10 ? "0" + minute : minute;
+        const time12 = hours < 12 
+            ? `${hours}:${formattedMinute} am` 
+            : `${hours - 12}:${formattedMinute} pm`;
+        
+        console.log("поточний час -", time12);
+        alert("поточний час - " + time12);
+    </script>
+</body>
+</html>
